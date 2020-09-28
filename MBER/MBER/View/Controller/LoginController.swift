@@ -27,14 +27,11 @@ class LoginController: UIViewController, ViewType {
     var disposeBag: DisposeBag!
     var viewModel: LoginViewModelBindable!
     
-    let titleLabel: UILabel = {
-       let label = UILabel()
-        label.text = "MBER"
-        label.textAlignment = .center
-        label.font = UIFont(name: "Avenir-Light", size: 42)
-        label.textColor = UIColor(white: 1, alpha: 0.8)
-        return label
-    }()
+    private let titleLabel = LoginTitleLabel()
+    private let emailInputContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: InputTextField(placeHolder: "Email"))
+    private let passwordInputContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: InputTextField(placeHolder: "Password"))
+    private let loginButton = GeneralConfirmButton(title: "Login", color: #colorLiteral(red: 0.2256013453, green: 0.6298174262, blue: 0.9165520668, alpha: 1))
+    private let goToSignUpPageButton = BottomButtonOnAuth(firstText: "Don't have an account? ", secondText: "Sign Up")
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -54,16 +51,37 @@ class LoginController: UIViewController, ViewType {
     // MARK: - Initial Setup
     func setupUI() {
         view.addSubview(titleLabel)
-        
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
             $0.centerX.equalToSuperview()
         }
+        
+        let stack = UIStackView(arrangedSubviews: [emailInputContainer, passwordInputContainer, loginButton])
+        stack.axis = .vertical
+        stack.spacing = 10
+        stack.setCustomSpacing(20, after: passwordInputContainer)
+        stack.arrangedSubviews.forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalTo(50)
+            }
+        }
+        
+        view.addSubview(stack)
+        stack.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(50)
+            $0.leading.trailing.equalToSuperview().inset(30)
+        }
+        
+        view.addSubview(goToSignUpPageButton)
+        goToSignUpPageButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
     
-    // MARK: - Automatically Binding
+    // MARK: - Automatic Binding
     func bind() {
-        <#code#>
+        
     }
     
 }

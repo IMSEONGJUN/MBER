@@ -8,9 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		25F1E23FB7CD755320FB69FD /* Pods_MBER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D9ED20DF995431EED7A0C /* Pods_MBER.framework */; };
+		CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC53E25222A350003CAAB /* InputTextField.swift */; };
+		CE7DC54325222A860003CAAB /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54225222A860003CAAB /* InputContainerView.swift */; };
+		CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */; };
+		CE7DC54B25222BDC0003CAAB /* LoginTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54A25222BDC0003CAAB /* LoginTitleLabel.swift */; };
+		CE7DC54F2522311F0003CAAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7DC54E2522311F0003CAAB /* GoogleService-Info.plist */; };
+		CE7DC553252233520003CAAB /* BottomButtonOnAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC552252233520003CAAB /* BottomButtonOnAuth.swift */; };
 		CE8AC174252077E1004B4CDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC173252077E1004B4CDE /* AppDelegate.swift */; };
 		CE8AC176252077E1004B4CDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC175252077E1004B4CDE /* SceneDelegate.swift */; };
-		CE8AC178252077E1004B4CDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC177252077E1004B4CDE /* ViewController.swift */; };
 		CE8AC17B252077E1004B4CDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8AC179252077E1004B4CDE /* Main.storyboard */; };
 		CE8AC17D252077E1004B4CDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE8AC17C252077E1004B4CDE /* Assets.xcassets */; };
 		CE8AC180252077E1004B4CDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8AC17E252077E1004B4CDE /* LaunchScreen.storyboard */; };
@@ -27,10 +32,15 @@
 /* Begin PBXFileReference section */
 		598D9ED20DF995431EED7A0C /* Pods_MBER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FF63178132E0A8660C193A9 /* Pods-MBER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBER.debug.xcconfig"; path = "Target Support Files/Pods-MBER/Pods-MBER.debug.xcconfig"; sourceTree = "<group>"; };
+		CE7DC53E25222A350003CAAB /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		CE7DC54225222A860003CAAB /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
+		CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConfirmButton.swift; sourceTree = "<group>"; };
+		CE7DC54A25222BDC0003CAAB /* LoginTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTitleLabel.swift; sourceTree = "<group>"; };
+		CE7DC54E2522311F0003CAAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE7DC552252233520003CAAB /* BottomButtonOnAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonOnAuth.swift; sourceTree = "<group>"; };
 		CE8AC170252077E1004B4CDE /* MBER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8AC173252077E1004B4CDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8AC175252077E1004B4CDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE8AC177252077E1004B4CDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE8AC17A252077E1004B4CDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE8AC17C252077E1004B4CDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE8AC17F252077E1004B4CDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,6 +85,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE7DC539252229D80003CAAB /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DC53E25222A350003CAAB /* InputTextField.swift */,
+			);
+			path = UITextField;
+			sourceTree = "<group>";
+		};
+		CE7DC54125222A690003CAAB /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DC54225222A860003CAAB /* InputContainerView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		CE7DC54525222AA60003CAAB /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */,
+				CE7DC552252233520003CAAB /* BottomButtonOnAuth.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		CE7DC54925222BC60003CAAB /* LoginTitleLabel */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DC54A25222BDC0003CAAB /* LoginTitleLabel.swift */,
+			);
+			path = LoginTitleLabel;
+			sourceTree = "<group>";
+		};
 		CE8AC167252077E1004B4CDE = {
 			isa = PBXGroup;
 			children = (
@@ -103,10 +146,10 @@
 				CE8AC1A025207852004B4CDE /* View */,
 				CE8AC19F25207850004B4CDE /* ViewModel */,
 				CE8AC1982520783F004B4CDE /* Model */,
-				CE8AC177252077E1004B4CDE /* ViewController.swift */,
 				CE8AC179252077E1004B4CDE /* Main.storyboard */,
 				CE8AC17C252077E1004B4CDE /* Assets.xcassets */,
 				CE8AC17E252077E1004B4CDE /* LaunchScreen.storyboard */,
+				CE7DC54E2522311F0003CAAB /* GoogleService-Info.plist */,
 				CE8AC181252077E1004B4CDE /* Info.plist */,
 			);
 			path = MBER;
@@ -191,6 +234,10 @@
 		CE8AC1A9252078BA004B4CDE /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				CE7DC54925222BC60003CAAB /* LoginTitleLabel */,
+				CE7DC54525222AA60003CAAB /* UIButton */,
+				CE7DC54125222A690003CAAB /* UIView */,
+				CE7DC539252229D80003CAAB /* UITextField */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -254,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7DC54F2522311F0003CAAB /* GoogleService-Info.plist in Resources */,
 				CE8AC180252077E1004B4CDE /* LaunchScreen.storyboard in Resources */,
 				CE8AC17D252077E1004B4CDE /* Assets.xcassets in Resources */,
 				CE8AC17B252077E1004B4CDE /* Main.storyboard in Resources */,
@@ -309,11 +357,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */,
 				CE8AC1AF25207908004B4CDE /* Constants.swift in Sources */,
-				CE8AC178252077E1004B4CDE /* ViewController.swift in Sources */,
+				CE7DC54325222A860003CAAB /* InputContainerView.swift in Sources */,
 				CE8AC1D0252079C5004B4CDE /* UIViewController+Ext.swift in Sources */,
 				CE8AC1D3252079DF004B4CDE /* Reactive+Ext.swift in Sources */,
+				CE7DC553252233520003CAAB /* BottomButtonOnAuth.swift in Sources */,
+				CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */,
 				CE8AC1AB252078EC004B4CDE /* LoginController.swift in Sources */,
+				CE7DC54B25222BDC0003CAAB /* LoginTitleLabel.swift in Sources */,
 				CE8AC174252077E1004B4CDE /* AppDelegate.swift in Sources */,
 				CE8AC1D6252079FE004B4CDE /* ViewType.swift in Sources */,
 				CE8AC176252077E1004B4CDE /* SceneDelegate.swift in Sources */,

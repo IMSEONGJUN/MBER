@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>693138796441-v3tlcc09n25336mmef784ptbp99s4hc0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.693138796441-v3tlcc09n25336mmef784ptbp99s4hc0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAxV9E3BEMB3GY23vOdDuws00TFREzk6BE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>693138796441</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.seongjunIm.www.MBER</string>
+	<key>PROJECT_ID</key>
+	<string>mber-d0a68</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mber-d0a68.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:693138796441:ios:c05af3238fffb86b0cad08</string>
+	<key>DATABASE_URL</key>
+	<string>https://mber-d0a68.firebaseio.com</string>
+</dict>
+</plist>

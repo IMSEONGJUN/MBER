@@ -18,6 +18,24 @@ struct LoginViewModel: LoginViewModelBindable {
     var isValidForm: Driver<Bool>
     
     init(_ model: AuthManager = AuthManager()) {
+        self.isValidForm = Observable
+            .combineLatest(
+                email,
+                password
+            )
+            .map {
+                isValidEmailAddress(email: $0)
+                && $1.count > 6
+            }
+            .asDriver(onErrorJustReturn: false)
         
+        isLoginCompleted = loginButtonTapped
+            .withLatestFrom(
+                Observable.combineLatest(email, password)
+            )
+            .flatMapLatest {
+                model.performLogin(email: $0, password: $1)
+            }
+            .asSignal(onErrorJustReturn: false)
     }
 }
