@@ -27,6 +27,8 @@
 		CE8AC1D925207A0B004B4CDE /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC1D825207A0B004B4CDE /* ViewModelType.swift */; };
 		CE8AC1DC25207E34004B4CDE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC1DB25207E34004B4CDE /* LoginViewModel.swift */; };
 		CE8AC1DF25207E71004B4CDE /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC1DE25207E71004B4CDE /* AuthManager.swift */; };
+		CEA561E525275BE800AD22AF /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA561E425275BE800AD22AF /* RegistrationController.swift */; };
+		CEA561E825275BFA00AD22AF /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA561E725275BFA00AD22AF /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		CE8AC1D825207A0B004B4CDE /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		CE8AC1DB25207E34004B4CDE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CE8AC1DE25207E71004B4CDE /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		CEA561E425275BE800AD22AF /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		CEA561E725275BFA00AD22AF /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		D2B853C818BE2E13E4BB3EF6 /* Pods-MBER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBER.release.xcconfig"; path = "Target Support Files/Pods-MBER/Pods-MBER.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				CE8AC1DB25207E34004B4CDE /* LoginViewModel.swift */,
+				CEA561E725275BFA00AD22AF /* RegistrationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				CE8AC1AA252078EC004B4CDE /* LoginController.swift */,
+				CEA561E425275BE800AD22AF /* RegistrationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -358,11 +364,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */,
+				CEA561E825275BFA00AD22AF /* RegistrationViewModel.swift in Sources */,
 				CE8AC1AF25207908004B4CDE /* Constants.swift in Sources */,
 				CE7DC54325222A860003CAAB /* InputContainerView.swift in Sources */,
 				CE8AC1D0252079C5004B4CDE /* UIViewController+Ext.swift in Sources */,
 				CE8AC1D3252079DF004B4CDE /* Reactive+Ext.swift in Sources */,
 				CE7DC553252233520003CAAB /* BottomButtonOnAuth.swift in Sources */,
+				CEA561E525275BE800AD22AF /* RegistrationController.swift in Sources */,
 				CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */,
 				CE8AC1AB252078EC004B4CDE /* LoginController.swift in Sources */,
 				CE7DC54B25222BDC0003CAAB /* LoginTitleLabel.swift in Sources */,

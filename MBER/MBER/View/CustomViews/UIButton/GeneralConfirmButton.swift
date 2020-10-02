@@ -16,11 +16,11 @@ final class GeneralConfirmButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(title: String, color: UIColor) {
+    convenience init(title: String, color: UIColor ,titleColor: UIColor = UIColor.white) {
         self.init(frame: .zero)
         setTitle(title, for: .normal)
         backgroundColor = color
-        setTitleColor(.white, for: .normal)
+        setTitleColor(titleColor, for: .normal)
         layer.cornerRadius = 6
         clipsToBounds = true
         isEnabled = false

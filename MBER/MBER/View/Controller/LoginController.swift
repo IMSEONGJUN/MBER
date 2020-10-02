@@ -21,7 +21,7 @@ protocol LoginViewModelBindable: ViewModelType {
     var isValidForm: Driver<Bool> { get }
 }
 
-class LoginController: UIViewController, ViewType {
+final class LoginController: UIViewController, ViewType {
     
     // MARK: - Properties
     var disposeBag: DisposeBag!
@@ -33,10 +33,11 @@ class LoginController: UIViewController, ViewType {
     private let loginButton = GeneralConfirmButton(title: "Login", color: #colorLiteral(red: 0.2256013453, green: 0.6298174262, blue: 0.9165520668, alpha: 1))
     private let goToSignUpPageButton = BottomButtonOnAuth(firstText: "Don't have an account? ", secondText: "Sign Up")
     
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Colors.loginViewBackGround
+        view.backgroundColor = Colors.AuthViewBackGroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +48,7 @@ class LoginController: UIViewController, ViewType {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
     
     // MARK: - Initial Setup
     func setupUI() {
@@ -82,6 +84,53 @@ class LoginController: UIViewController, ViewType {
     // MARK: - Automatic Binding
     func bind() {
         
+        // Input -> ViewModel
+        emailInputContainer.inputText.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .bind(to: viewModel.email)
+            .disposed(by: disposeBag)
+        
+        passwordInputContainer.inputText.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .bind(to: viewModel.password)
+            .disposed(by: disposeBag)
+        
+        loginButton.rx.tap
+            .bind(to: viewModel.loginButtonTapped)
+            .disposed(by: disposeBag)
+        
+        
+        // ViewModel -> Output
+        viewModel.isValidForm
+            .drive(onNext: { [weak self] in
+                self?.loginButton.isEnabled = $0
+                self?.loginButton.backgroundColor = $0 ? #colorLiteral(red: 0.2256013453, green: 0.6298174262, blue: 0.9165520668, alpha: 1) : #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.isLoginCompleted
+            .emit(onNext: { [weak self] _ in
+                self?.showActivityIndicator(false)
+                self?.switchToConversationVC()
+            })
+            .disposed(by: disposeBag)
+        
+        
+        // UI binding
+        loginButton.rx.tap
+            .do(onNext: { [unowned self] _ in
+                self.showActivityIndicator(true)
+            })
+            .bind(to: viewModel.loginButtonTapped)
+            .disposed(by: disposeBag)
+        
+        goToSignUpPageButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                let vc = RegistrationController.create(with: RegistrationViewModel())
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
-    
 }

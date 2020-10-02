@@ -8,5 +8,5 @@
 import UIKit
 
 enum Colors {
-    static let loginViewBackGround = UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 1)
+    static let AuthViewBackGroundColor = UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 1)
 }

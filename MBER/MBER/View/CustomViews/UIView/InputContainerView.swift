@@ -10,6 +10,8 @@ import SnapKit
 
 final class InputContainerView: UIView {
     
+    var inputText: UITextField!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -22,8 +24,8 @@ final class InputContainerView: UIView {
         super.init(frame: .zero)
         let imageView = UIImageView(image: image)
         let underline = UIView()
-        
-        [imageView, textField, underline].forEach({ addSubview($0)})
+        inputText = textField
+        [imageView, inputText, underline].forEach({ addSubview($0)})
         underline.backgroundColor = .white
         underline.snp.makeConstraints {
             $0.bottom.trailing.equalToSuperview()
@@ -37,7 +39,7 @@ final class InputContainerView: UIView {
             $0.width.height.equalTo(30)
         }
         
-        textField.snp.makeConstraints {
+        inputText.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(imageView.snp.trailing).offset(10)
             $0.trailing.equalToSuperview().inset(10)
