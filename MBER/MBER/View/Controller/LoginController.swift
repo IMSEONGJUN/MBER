@@ -27,11 +27,12 @@ final class LoginController: UIViewController, ViewType {
     var disposeBag: DisposeBag!
     var viewModel: LoginViewModelBindable!
     
-    private let titleLabel = LoginTitleLabel()
+    private let titleLabel = AuthTitleLabel()
     private let emailInputContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: InputTextField(placeHolder: "Email"))
     private let passwordInputContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: InputTextField(placeHolder: "Password"))
     private let loginButton = GeneralConfirmButton(title: "Login", color: #colorLiteral(red: 0.2256013453, green: 0.6298174262, blue: 0.9165520668, alpha: 1))
     private let goToSignUpPageButton = BottomButtonOnAuth(firstText: "Don't have an account? ", secondText: "Sign Up")
+    private let gesture = UITapGestureRecognizer()
     
     
     // MARK: - Life Cycle
@@ -42,16 +43,23 @@ final class LoginController: UIViewController, ViewType {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
+//        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    
+    // MARK: - Override
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
     
     
     // MARK: - Initial Setup
     func setupUI() {
+        emailInputContainer.inputText.keyboardType = .emailAddress
+        passwordInputContainer.inputText.isSecureTextEntry = true
+        
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
@@ -79,7 +87,10 @@ final class LoginController: UIViewController, ViewType {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+        
+        view.addGestureRecognizer(gesture)
     }
+    
     
     // MARK: - Automatic Binding
     func bind() {
@@ -130,6 +141,12 @@ final class LoginController: UIViewController, ViewType {
             .subscribe(onNext: { [unowned self] in
                 let vc = RegistrationController.create(with: RegistrationViewModel())
                 self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        gesture.rx.event
+            .subscribe(onNext: { [unowned self] _ in
+                self.view.endEditing(true)
             })
             .disposed(by: disposeBag)
     }

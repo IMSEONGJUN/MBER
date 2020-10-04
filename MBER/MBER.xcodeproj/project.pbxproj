@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25F1E23FB7CD755320FB69FD /* Pods_MBER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D9ED20DF995431EED7A0C /* Pods_MBER.framework */; };
+		CE2E81D8252A05BD002804C8 /* SelectMemberTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */; };
 		CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC53E25222A350003CAAB /* InputTextField.swift */; };
 		CE7DC54325222A860003CAAB /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54225222A860003CAAB /* InputContainerView.swift */; };
 		CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */; };
@@ -27,6 +28,7 @@
 		CE8AC1D925207A0B004B4CDE /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC1D825207A0B004B4CDE /* ViewModelType.swift */; };
 		CE8AC1DC25207E34004B4CDE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC1DB25207E34004B4CDE /* LoginViewModel.swift */; };
 		CE8AC1DF25207E71004B4CDE /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AC1DE25207E71004B4CDE /* AuthManager.swift */; };
+		CE98E48D2529B8400094FD8B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98E48C2529B8400094FD8B /* NetworkManager.swift */; };
 		CEA561E525275BE800AD22AF /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA561E425275BE800AD22AF /* RegistrationController.swift */; };
 		CEA561E825275BFA00AD22AF /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA561E725275BFA00AD22AF /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,7 @@
 /* Begin PBXFileReference section */
 		598D9ED20DF995431EED7A0C /* Pods_MBER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FF63178132E0A8660C193A9 /* Pods-MBER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBER.debug.xcconfig"; path = "Target Support Files/Pods-MBER/Pods-MBER.debug.xcconfig"; sourceTree = "<group>"; };
+		CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMemberTypeView.swift; sourceTree = "<group>"; };
 		CE7DC53E25222A350003CAAB /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		CE7DC54225222A860003CAAB /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConfirmButton.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		CE8AC1D825207A0B004B4CDE /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		CE8AC1DB25207E34004B4CDE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CE8AC1DE25207E71004B4CDE /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		CE98E48C2529B8400094FD8B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CEA561E425275BE800AD22AF /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		CEA561E725275BFA00AD22AF /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		D2B853C818BE2E13E4BB3EF6 /* Pods-MBER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBER.release.xcconfig"; path = "Target Support Files/Pods-MBER/Pods-MBER.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				CE7DC54225222A860003CAAB /* InputContainerView.swift */,
+				CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				CE8AC1DE25207E71004B4CDE /* AuthManager.swift */,
+				CE98E48C2529B8400094FD8B /* NetworkManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -363,12 +369,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE98E48D2529B8400094FD8B /* NetworkManager.swift in Sources */,
 				CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */,
 				CEA561E825275BFA00AD22AF /* RegistrationViewModel.swift in Sources */,
 				CE8AC1AF25207908004B4CDE /* Constants.swift in Sources */,
 				CE7DC54325222A860003CAAB /* InputContainerView.swift in Sources */,
 				CE8AC1D0252079C5004B4CDE /* UIViewController+Ext.swift in Sources */,
 				CE8AC1D3252079DF004B4CDE /* Reactive+Ext.swift in Sources */,
+				CE2E81D8252A05BD002804C8 /* SelectMemberTypeView.swift in Sources */,
 				CE7DC553252233520003CAAB /* BottomButtonOnAuth.swift in Sources */,
 				CEA561E525275BE800AD22AF /* RegistrationController.swift in Sources */,
 				CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */,

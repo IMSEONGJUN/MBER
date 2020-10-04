@@ -23,7 +23,8 @@ final class InputTextField: UITextField {
         keyboardAppearance = .dark
         returnKeyType = .done
         autocorrectionType = .no
-        attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [.foregroundColor : UIColor.lightGray])
+        attributedPlaceholder = NSAttributedString(string: placeHolder,
+                                                   attributes: [.foregroundColor : UIColor.lightGray])
         textColor = .white
         font = UIFont.systemFont(ofSize: 16, weight: .medium)
     }

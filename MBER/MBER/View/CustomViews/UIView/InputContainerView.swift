@@ -23,9 +23,11 @@ final class InputContainerView: UIView {
     init(image: UIImage?, textField: UITextField) {
         super.init(frame: .zero)
         let imageView = UIImageView(image: image)
+        imageView.alpha = 0.87
         let underline = UIView()
         inputText = textField
-        [imageView, inputText, underline].forEach({ addSubview($0)})
+        
+        [imageView, inputText, underline].forEach({ addSubview($0) })
         underline.backgroundColor = .white
         underline.snp.makeConstraints {
             $0.bottom.trailing.equalToSuperview()

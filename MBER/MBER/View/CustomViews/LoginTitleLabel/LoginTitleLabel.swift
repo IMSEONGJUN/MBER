@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginTitleLabel: UILabel {
+final class AuthTitleLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

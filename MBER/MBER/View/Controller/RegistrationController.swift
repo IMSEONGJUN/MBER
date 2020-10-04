@@ -28,36 +28,20 @@ protocol RegistrationViewModelBindable: ViewModelType {
 final class RegistrationController: UIViewController, ViewType {
 
     // MARK: - Properties
-    let plusPhotoButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
-        btn.tintColor = .brown
-        btn.contentMode = .scaleAspectFill
-        btn.clipsToBounds = true
-        return btn
-    }()
     
-    private lazy var emailContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: emailTextField)
-    private let emailTextField = InputTextField(placeHolder: "Email")
-    
-    private lazy var fullNameContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_person_outline_white_2x"), textField: fullNameTextField)
-    private let fullNameTextField = InputTextField(placeHolder: "Full Name")
-    
-    private lazy var userNameContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_person_outline_white_2x"), textField: userNameTextField)
-    private let userNameTextField = InputTextField(placeHolder: "Username")
-    
-    private lazy var passwordContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextField)
-    private let passwordTextField = InputTextField(placeHolder: "Password")
-        
-    private let signUpButton: UIButton = GeneralConfirmButton(title: "Sign Up", color: #colorLiteral(red: 0.9379426837, green: 0.7515827417, blue: 0.31791839, alpha: 1))
-    
+    private let titleLabel = AuthTitleLabel()
+    private let emailContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: InputTextField(placeHolder: "Email"))
+    private let fullNameContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_person_outline_white_2x"), textField: InputTextField(placeHolder: "Full Name"))
+    private let passwordContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: InputTextField(placeHolder: "Password"))
+    private let segment = SelectMemberTypeView(text: "Rider", "Driver")
+    private let signUpButton: UIButton = GeneralConfirmButton(title: "Sign Up", color: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
     private let goToLoginPageButton = BottomButtonOnAuth(firstText: "Already have an account? ", secondText: "Log In")
     
-    private lazy var stackContents = [emailContainer,
-                              fullNameContainer,
-                              userNameContainer,
-                              passwordContainer,
-                              signUpButton]
+    private lazy var stackContents = [ emailContainer,
+                                       fullNameContainer,
+                                       passwordContainer,
+                                       segment,
+                                       signUpButton ]
     
     private let stack = UIStackView()
     
@@ -71,45 +55,52 @@ final class RegistrationController: UIViewController, ViewType {
         view.backgroundColor = Colors.AuthViewBackGroundColor
     }
     
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
     
     // MARK: - Initial UI Setup
     func setupUI() {
         configureUIAttributeThings()
-        configurePlusPhotoButton()
         configureInputContextStackView()
         configureGoToLoginPageButton()
         setTapGesture()
     }
     
     private func configureUIAttributeThings() {
-        passwordTextField.isSecureTextEntry = true
-        emailTextField.keyboardType = .emailAddress
-    }
-    
-    private func configurePlusPhotoButton() {
-        view.addSubview(plusPhotoButton)
-        plusPhotoButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(50)
-            $0.width.height.equalTo(200)
-        }
+        emailContainer.inputText.keyboardType = .emailAddress
+        passwordContainer.inputText.isSecureTextEntry = true
     }
     
     private func configureInputContextStackView() {
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+            $0.centerX.equalToSuperview()
+        }
+        
         stackContents.forEach({ stack.addArrangedSubview($0) })
         stack.axis = .vertical
         stack.spacing = 20
         stack.setCustomSpacing(10, after: passwordContainer)
-        stackContents.forEach({
+        
+        [ emailContainer,
+          fullNameContainer,
+          passwordContainer,
+          signUpButton ].forEach({
             $0.snp.makeConstraints {
                 $0.height.equalTo(50)
             }
         })
         
+        segment.snp.makeConstraints {
+            $0.height.equalTo(100)
+        }
+        
         view.addSubview(stack)
         stack.snp.makeConstraints {
-            $0.top.equalTo(plusPhotoButton.snp.bottom).offset(50)
-            $0.leading.trailing.equalToSuperview().inset(50)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview().inset(30)
         }
     }
     
@@ -136,25 +127,19 @@ final class RegistrationController: UIViewController, ViewType {
             .bind(to: viewModel.signupButtonTapped)
             .disposed(by: disposeBag)
         
-        emailTextField.rx.text
+        emailContainer.inputText.rx.text
             .orEmpty
             .distinctUntilChanged()
             .bind(to: viewModel.email)
             .disposed(by: disposeBag)
         
-        fullNameTextField.rx.text
+        fullNameContainer.inputText.rx.text
             .orEmpty
             .distinctUntilChanged()
             .bind(to: viewModel.fullName)
             .disposed(by: disposeBag)
         
-        userNameTextField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .bind(to: viewModel.userName)
-            .disposed(by: disposeBag)
-        
-        passwordTextField.rx.text
+        passwordContainer.inputText.rx.text
             .orEmpty
             .distinctUntilChanged()
             .bind(to: viewModel.password)
