@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class SelectMemberTypeView: UIView {
+final class SelectMemberTypeView: UIView {
     let imageView = UIImageView()
     var segmentControl = UISegmentedControl()
     let underline = UIView()
@@ -16,8 +17,8 @@ class SelectMemberTypeView: UIView {
         super.init(frame: frame)
     }
     
-    convenience init(text: String...) {
-        self.init(frame: .zero)
+    init(text: String...) {
+        super.init(frame: .zero)
     
         addSubview(imageView)
         imageView.image = #imageLiteral(resourceName: "ic_account_box_white_2x")
@@ -27,12 +28,13 @@ class SelectMemberTypeView: UIView {
             $0.width.height.equalTo(30)
         }
         
-        addSubview(segmentControl)
         segmentControl = UISegmentedControl(items: text)
+        addSubview(segmentControl)
         segmentControl.selectedSegmentIndex = 0
         segmentControl.tintColor = .white
         segmentControl.layer.borderWidth = 2
         segmentControl.layer.borderColor = UIColor.white.cgColor
+        segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(10)
             $0.leading.equalTo(imageView)
@@ -44,11 +46,9 @@ class SelectMemberTypeView: UIView {
         underline.snp.makeConstraints {
             $0.top.equalTo(segmentControl.snp.bottom).offset(15)
             $0.leading.equalTo(imageView)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalTo(segmentControl)
             $0.height.equalTo(1)
         }
-        
-        
     }
     
     required init?(coder: NSCoder) {

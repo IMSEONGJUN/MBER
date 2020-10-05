@@ -10,15 +10,13 @@ import RxSwift
 import RxCocoa
 import Firebase
 
-typealias Register = (profileImage: UIImage?, email: String, fullName: String, userName: String, password: String)
+typealias Register = (email: String, fullName: String, userType: String, password: String)
 
 struct RegistrationViewModel: RegistrationViewModelBindable {
     
     // MARK: - Properties
-    let profileImage = PublishRelay<UIImage?>()
     let email = PublishRelay<String>()
     let fullName = PublishRelay<String>()
-    let userName = PublishRelay<String>()
     let memberType = PublishRelay<String>()
     let password = PublishRelay<String>()
     let signupButtonTapped = PublishRelay<Void>()
@@ -40,21 +38,18 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
         
         let registrationValues = Observable
             .combineLatest(
-                profileImage,
                 email,
                 fullName,
-                userName,
+                memberType,
                 password
             )
             .share()
         
         isFormValid = registrationValues
             .map {
-                $0 != nil
-                && isValidEmailAddress(email: $1)
-                && $2.count > 2
-                && $3.count > 2
-                && $4.count > 6
+                isValidEmailAddress(email: $0)
+                && $1.count > 2
+                && $3.count > 6
             }
             .asDriver(onErrorJustReturn: false)
         

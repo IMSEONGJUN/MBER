@@ -9,13 +9,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 import JGProgressHUD
+import SnapKit
 
 protocol RegistrationViewModelBindable: ViewModelType {
     // Input
-    var profileImage: PublishRelay<UIImage?> { get }
     var email: PublishRelay<String> { get }
     var fullName: PublishRelay<String> { get }
-    var userName: PublishRelay<String> { get }
     var memberType: PublishRelay<String> { get }
     var password: PublishRelay<String> { get }
     var signupButtonTapped: PublishRelay<Void> { get }
@@ -147,6 +146,7 @@ final class RegistrationController: UIViewController, ViewType {
         segment.segmentControl.rx.selectedTitle
             .bind(to: viewModel.memberType)
             .disposed(by: disposeBag)
+        
         
         // viewModel -> Output
         viewModel.isFormValid
