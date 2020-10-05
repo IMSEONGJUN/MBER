@@ -16,6 +16,7 @@ protocol RegistrationViewModelBindable: ViewModelType {
     var email: PublishRelay<String> { get }
     var fullName: PublishRelay<String> { get }
     var userName: PublishRelay<String> { get }
+    var memberType: PublishRelay<String> { get }
     var password: PublishRelay<String> { get }
     var signupButtonTapped: PublishRelay<Void> { get }
     
@@ -54,10 +55,7 @@ final class RegistrationController: UIViewController, ViewType {
         super.viewDidLoad()
         view.backgroundColor = Colors.AuthViewBackGroundColor
     }
-    
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
+
     
     // MARK: - Initial UI Setup
     func setupUI() {
@@ -87,11 +85,12 @@ final class RegistrationController: UIViewController, ViewType {
         [ emailContainer,
           fullNameContainer,
           passwordContainer,
-          signUpButton ].forEach({
+          signUpButton ]
+        .forEach {
             $0.snp.makeConstraints {
                 $0.height.equalTo(50)
             }
-        })
+        }
         
         segment.snp.makeConstraints {
             $0.height.equalTo(100)
@@ -145,6 +144,9 @@ final class RegistrationController: UIViewController, ViewType {
             .bind(to: viewModel.password)
             .disposed(by: disposeBag)
         
+        segment.segmentControl.rx.selectedTitle
+            .bind(to: viewModel.memberType)
+            .disposed(by: disposeBag)
         
         // viewModel -> Output
         viewModel.isFormValid
@@ -153,10 +155,6 @@ final class RegistrationController: UIViewController, ViewType {
                 self?.signUpButton.backgroundColor = $0 ? #colorLiteral(red: 0.2256013453, green: 0.6298174262, blue: 0.9165520668, alpha: 1) : #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
             })
             .disposed(by: disposeBag)
-        
-//        viewModel.profileImage
-//            .bind(to: self.rx.setProfileImage)
-//            .disposed(by: disposeBag)
         
         viewModel.isRegistering
             .drive(onNext: {[weak self] in
@@ -175,12 +173,6 @@ final class RegistrationController: UIViewController, ViewType {
         
         
         // UI Binding
-//        plusPhotoButton.rx.tap
-//            .subscribe(onNext: { [unowned self] in
-//                self.didTapPlusPhotoButton(viewController: self)
-//            })
-//            .disposed(by: disposeBag)
-        
         goToLoginPageButton.rx.tap
             .subscribe(onNext:{ [unowned self] in
                 self.navigationController?.popViewController(animated: true)
@@ -226,14 +218,3 @@ final class RegistrationController: UIViewController, ViewType {
     }
 }
 
-
-// MARK: - UIImagePickerControllerDelegate
-extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("finished image pick")
-        let image = info[.originalImage] as? UIImage
-        viewModel.profileImage.accept(image)
-        picker.dismiss(animated: true)
-    }
-}

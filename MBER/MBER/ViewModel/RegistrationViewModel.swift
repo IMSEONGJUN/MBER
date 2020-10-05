@@ -19,6 +19,7 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
     let email = PublishRelay<String>()
     let fullName = PublishRelay<String>()
     let userName = PublishRelay<String>()
+    let memberType = PublishRelay<String>()
     let password = PublishRelay<String>()
     let signupButtonTapped = PublishRelay<Void>()
     
