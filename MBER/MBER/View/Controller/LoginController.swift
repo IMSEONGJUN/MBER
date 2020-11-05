@@ -45,14 +45,7 @@ final class LoginController: UIViewController, ViewType {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-//        navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-    
-    // MARK: - Override
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
     
     
     // MARK: - Initial Setup

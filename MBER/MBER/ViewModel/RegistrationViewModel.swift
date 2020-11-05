@@ -30,12 +30,13 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
     
     // MARK: - Initializer
     init(_ model: AuthManager = AuthManager()) {
-        
+        // Proxy
         let onRegistering = PublishRelay<Bool>()
         isRegistering = onRegistering.asDriver(onErrorJustReturn: false)
         let onRegistered = PublishRelay<Bool>()
         isRegistered = onRegistered.asSignal(onErrorJustReturn: false)
         
+        // Validate Registration Values
         let registrationValues = Observable
             .combineLatest(
                 email,
@@ -53,16 +54,23 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
             }
             .asDriver(onErrorJustReturn: false)
         
+        // Register
         signupButtonTapped
             .withLatestFrom( registrationValues )
             .do(onNext: { _ in
                 onRegistering.accept(true)
             })
             .flatMapLatest( model.performRegistration )
-            .subscribe(onNext: {
+            .subscribe { (completable) in
                 onRegistering.accept(false)
-                onRegistered.accept($0 ? true : false)
-            })
+                switch completable {
+                case .completed:
+                    onRegistered.accept(true)
+                case .error(let error):
+                    print("failed to register:", error)
+                    onRegistered.accept(false)
+                }
+            }
             .disposed(by: disposeBag)
     }
 }
