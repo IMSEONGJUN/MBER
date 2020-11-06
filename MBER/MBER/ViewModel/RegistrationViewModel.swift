@@ -17,7 +17,7 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
     // MARK: - Properties
     let email = PublishRelay<String>()
     let fullName = PublishRelay<String>()
-    let memberType = PublishRelay<String>()
+    let userType = PublishRelay<String>()
     let password = PublishRelay<String>()
     let signupButtonTapped = PublishRelay<Void>()
     
@@ -30,17 +30,18 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
     
     // MARK: - Initializer
     init(_ model: AuthManager = AuthManager()) {
-        
+        // Proxy
         let onRegistering = PublishRelay<Bool>()
         isRegistering = onRegistering.asDriver(onErrorJustReturn: false)
         let onRegistered = PublishRelay<Bool>()
         isRegistered = onRegistered.asSignal(onErrorJustReturn: false)
         
+        // Validate Registration Values
         let registrationValues = Observable
             .combineLatest(
                 email,
                 fullName,
-                memberType,
+                userType,
                 password
             )
             .share()
@@ -53,6 +54,7 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
             }
             .asDriver(onErrorJustReturn: false)
         
+        // Register
         signupButtonTapped
             .withLatestFrom( registrationValues )
             .do(onNext: { _ in
@@ -61,7 +63,7 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
             .flatMapLatest( model.performRegistration )
             .subscribe(onNext: {
                 onRegistering.accept(false)
-                onRegistered.accept($0 ? true : false)
+                onRegistered.accept($0)
             })
             .disposed(by: disposeBag)
     }

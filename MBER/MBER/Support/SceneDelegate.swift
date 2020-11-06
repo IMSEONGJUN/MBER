@@ -18,13 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        if loginCheck() {
-//            switchToConversationVC()
-        } else {
+//        if loginCheck() {
+////            switchToConversationVC()
+//        } else {
             let loginController = LoginController.create(with: LoginViewModel())
             window?.rootViewController = UINavigationController(rootViewController: loginController)
             window?.makeKeyAndVisible()
-        }
+//        }
     }
 
     func loginCheck() -> Bool {

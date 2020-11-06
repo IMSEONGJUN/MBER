@@ -35,7 +35,7 @@ final class AuthManager {
     
     // MARK: - Registration Logic
     func performRegistration(values: Register) -> Observable<Bool> {
-        Observable.create { (observer) -> Disposable in
+        return Observable.create { (observer) -> Disposable in
             Auth.auth().createUser(withEmail: values.email, password: values.password) { (result, error) in
                 if let error = error {
                     print("failed to create User: ", error)
@@ -63,7 +63,7 @@ final class AuthManager {
             "uid": uid,
         ]
         
-        return Observable<Bool>.create { (observer) -> Disposable in
+        return Observable.create { (observer) -> Disposable in
             Firestore.firestore().collection("users").document(uid).setData(docData) { (error) in
                 if let error = error {
                     print("failed to save user Info: ", error)

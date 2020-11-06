@@ -15,7 +15,7 @@ protocol RegistrationViewModelBindable: ViewModelType {
     // Input
     var email: PublishRelay<String> { get }
     var fullName: PublishRelay<String> { get }
-    var memberType: PublishRelay<String> { get }
+    var userType: PublishRelay<String> { get }
     var password: PublishRelay<String> { get }
     var signupButtonTapped: PublishRelay<Void> { get }
     
@@ -144,7 +144,7 @@ final class RegistrationController: UIViewController, ViewType {
             .disposed(by: disposeBag)
         
         segment.segmentControl.rx.selectedTitle
-            .bind(to: viewModel.memberType)
+            .bind(to: viewModel.userType)
             .disposed(by: disposeBag)
         
         
@@ -187,10 +187,11 @@ final class RegistrationController: UIViewController, ViewType {
                 return self.getKeyboardFrameHeight(noti: noti)
             }
             .subscribe(onNext: { [weak self] in
-                self?.view.transform = CGAffineTransform(translationX: 0, y: -$0 - 8)
+                let padding = self?.view.safeAreaInsets.bottom ?? 0
+                self?.view.transform = CGAffineTransform(translationX: 0, y: -$0 - padding)
             })
             .disposed(by: disposeBag)
-        
+
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
             .subscribe(onNext: { [weak self] noti -> Void in
                 UIView.animate(withDuration: 0.5,
@@ -213,8 +214,11 @@ final class RegistrationController: UIViewController, ViewType {
         }
         let keyboardHeight = value.cgRectValue.height
         let bottomSpace = self.view.frame.height - (self.stack.frame.origin.y + self.stack.frame.height)
-        let lengthToMoveUp = keyboardHeight - bottomSpace
-        return lengthToMoveUp
+        if keyboardHeight > bottomSpace {
+            let lengthToMoveUp = keyboardHeight - bottomSpace
+            return lengthToMoveUp
+        }
+        return 0
     }
 }
 
