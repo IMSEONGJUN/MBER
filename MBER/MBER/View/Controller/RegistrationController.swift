@@ -15,7 +15,7 @@ protocol RegistrationViewModelBindable: ViewModelType {
     // Input
     var email: PublishRelay<String> { get }
     var fullName: PublishRelay<String> { get }
-    var memberType: PublishRelay<String> { get }
+    var userType: PublishRelay<String> { get }
     var password: PublishRelay<String> { get }
     var signupButtonTapped: PublishRelay<Void> { get }
     
@@ -144,7 +144,7 @@ final class RegistrationController: UIViewController, ViewType {
             .disposed(by: disposeBag)
         
         segment.segmentControl.rx.selectedTitle
-            .bind(to: viewModel.memberType)
+            .bind(to: viewModel.userType)
             .disposed(by: disposeBag)
         
         

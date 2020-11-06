@@ -17,7 +17,7 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
     // MARK: - Properties
     let email = PublishRelay<String>()
     let fullName = PublishRelay<String>()
-    let memberType = PublishRelay<String>()
+    let userType = PublishRelay<String>()
     let password = PublishRelay<String>()
     let signupButtonTapped = PublishRelay<Void>()
     
@@ -41,7 +41,7 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
             .combineLatest(
                 email,
                 fullName,
-                memberType,
+                userType,
                 password
             )
             .share()
@@ -61,16 +61,10 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
                 onRegistering.accept(true)
             })
             .flatMapLatest( model.performRegistration )
-            .subscribe { (completable) in
+            .subscribe(onNext: {
                 onRegistering.accept(false)
-                switch completable {
-                case .completed:
-                    onRegistered.accept(true)
-                case .error(let error):
-                    print("failed to register:", error)
-                    onRegistered.accept(false)
-                }
-            }
+                onRegistered.accept($0)
+            })
             .disposed(by: disposeBag)
     }
 }

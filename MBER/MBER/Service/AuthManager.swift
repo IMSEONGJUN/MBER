@@ -34,19 +34,17 @@ final class AuthManager {
     }
     
     // MARK: - Registration Logic
-    func performRegistration(values: Register) -> Completable {
-        return Completable.create { (observer) -> Disposable in
+    func performRegistration(values: Register) -> Observable<Bool> {
+        return Observable.create { (observer) -> Disposable in
             Auth.auth().createUser(withEmail: values.email, password: values.password) { (result, error) in
                 if let error = error {
                     print("failed to create User: ", error)
-                    observer(.error(error))
+                    observer.onNext(false)
                     return
                 }
                 self.saveInfoToFirestore(values: values)
-                    .subscribe(onCompleted: {
-                        observer(.completed)
-                    }, onError: { (err) in
-                        observer(.error(err))
+                    .subscribe(onNext: {
+                        observer.onNext($0)
                     })
                     .disposed(by: self.disposeBag)
             }
@@ -55,7 +53,7 @@ final class AuthManager {
         
     }
     
-    private func saveInfoToFirestore(values: Register) -> Completable {
+    private func saveInfoToFirestore(values: Register) -> Observable<Bool> {
         let uid = Auth.auth().currentUser?.uid ?? ""
         
         let docData:[String: Any] = [
@@ -65,14 +63,14 @@ final class AuthManager {
             "uid": uid,
         ]
         
-        return Completable.create { (observer) -> Disposable in
+        return Observable.create { (observer) -> Disposable in
             Firestore.firestore().collection("users").document(uid).setData(docData) { (error) in
                 if let error = error {
                     print("failed to save user Info: ", error)
-                    observer(.error(error))
+                    observer.onNext(false)
                     return
                 }
-                observer(.completed)
+                observer.onNext(true)
             }
             return Disposables.create()
         }
