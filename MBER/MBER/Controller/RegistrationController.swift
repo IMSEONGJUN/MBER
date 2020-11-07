@@ -167,7 +167,7 @@ final class RegistrationController: UIViewController, ViewType {
             .filter{ $0 == true }
             .emit(onNext: { [weak self] _ in
                 self?.showActivityIndicator(false)
-                self?.switchToConversationVC()
+                self?.switchToHomeVC()
             })
             .disposed(by: disposeBag)
         

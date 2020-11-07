@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
 //        if loginCheck() {
-////            switchToConversationVC()
+//            switchToHomeVC()
 //        } else {
             let loginController = LoginController.create(with: LoginViewModel())
             window?.rootViewController = UINavigationController(rootViewController: loginController)
