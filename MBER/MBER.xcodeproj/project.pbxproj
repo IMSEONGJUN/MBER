@@ -33,7 +33,7 @@
 		CEA561E825275BFA00AD22AF /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA561E725275BFA00AD22AF /* RegistrationViewModel.swift */; };
 		CEBEA7542556ECAB003C8943 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEA7532556ECAB003C8943 /* HomeController.swift */; };
 		CEBEA7572556ECCB003C8943 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEA7562556ECCB003C8943 /* HomeViewModel.swift */; };
-		CEBEA75A2556ED66003C8943 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEA7592556ED66003C8943 /* User.swift */; };
+		CEBEA7632556EF63003C8943 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEA7622556EF63003C8943 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +66,7 @@
 		CEA561E725275BFA00AD22AF /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		CEBEA7532556ECAB003C8943 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		CEBEA7562556ECCB003C8943 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		CEBEA7592556ED66003C8943 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = MBER/ViewModel/User.swift; sourceTree = SOURCE_ROOT; };
+		CEBEA7622556EF63003C8943 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D2B853C818BE2E13E4BB3EF6 /* Pods-MBER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBER.release.xcconfig"; path = "Target Support Files/Pods-MBER/Pods-MBER.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,7 +161,7 @@
 				CE8AC1A025207852004B4CDE /* View */,
 				CE8AC1A72520789D004B4CDE /* Controller */,
 				CE8AC19F25207850004B4CDE /* ViewModel */,
-				CE8AC1982520783F004B4CDE /* Model */,
+				CEBEA7612556EF50003C8943 /* Model */,
 				CE8AC179252077E1004B4CDE /* Main.storyboard */,
 				CE8AC17C252077E1004B4CDE /* Assets.xcassets */,
 				CE8AC17E252077E1004B4CDE /* LaunchScreen.storyboard */,
@@ -169,14 +169,6 @@
 				CE8AC181252077E1004B4CDE /* Info.plist */,
 			);
 			path = MBER;
-			sourceTree = "<group>";
-		};
-		CE8AC1982520783F004B4CDE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CEBEA7592556ED66003C8943 /* User.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		CE8AC19F25207850004B4CDE /* ViewModel */ = {
@@ -261,6 +253,14 @@
 				CE7DC539252229D80003CAAB /* UITextField */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		CEBEA7612556EF50003C8943 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEBEA7622556EF63003C8943 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,7 +388,7 @@
 				CE8AC1D3252079DF004B4CDE /* Reactive+Ext.swift in Sources */,
 				CE2E81D8252A05BD002804C8 /* SelectMemberTypeView.swift in Sources */,
 				CE7DC553252233520003CAAB /* BottomButtonOnAuth.swift in Sources */,
-				CEBEA75A2556ED66003C8943 /* User.swift in Sources */,
+				CEBEA7632556EF63003C8943 /* User.swift in Sources */,
 				CEA561E525275BE800AD22AF /* RegistrationController.swift in Sources */,
 				CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */,
 				CE8AC1AB252078EC004B4CDE /* LoginController.swift in Sources */,

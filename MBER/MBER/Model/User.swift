@@ -2,11 +2,10 @@
 //  User.swift
 //  MBER
 //
-//  Created by SEONGJUN on 2020/11/07.
+//  Created by SEONGJUN on 2020/11/08.
 //
 
 import Foundation
-
 
 struct User {
 }
