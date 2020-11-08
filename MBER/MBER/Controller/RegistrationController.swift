@@ -48,6 +48,7 @@ final class RegistrationController: UIViewController, ViewType {
     var viewModel: RegistrationViewModelBindable!
     var disposeBag: DisposeBag!
     
+    weak var coordinatior: MainCoordinator?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {

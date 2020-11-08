@@ -27,6 +27,8 @@ final class LoginController: UIViewController, ViewType {
     var disposeBag: DisposeBag!
     var viewModel: LoginViewModelBindable!
     
+    weak var coordinator: MainCoordinator?
+    
     private let titleLabel = AuthTitleLabel()
     private let emailInputContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: InputTextField(placeHolder: "Email"))
     private let passwordInputContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: InputTextField(placeHolder: "Password"))
@@ -132,8 +134,7 @@ final class LoginController: UIViewController, ViewType {
         
         goToSignUpPageButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                let vc = RegistrationController.create(with: RegistrationViewModel())
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.coordinator?.goRegistrationVC()
             })
             .disposed(by: disposeBag)
         
