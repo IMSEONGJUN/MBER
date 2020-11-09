@@ -5,7 +5,7 @@
 - M in MBER comes from Mobility's Initial M
 - Working on Progress Recently
 
-- MVVM architecture
+- MVVM-C architecture
 - Using RxSwift
 - Used SnapKit for UI
 - MapKit
