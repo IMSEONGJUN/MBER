@@ -18,6 +18,7 @@ protocol RegistrationViewModelBindable: ViewModelType {
     var userType: PublishRelay<String> { get }
     var password: PublishRelay<String> { get }
     var signupButtonTapped: PublishRelay<Void> { get }
+    var goToLoginPageButtonTapped: PublishRelay<Void> { get }
     
     // Output
     var isRegistering: Driver<Bool> { get }
@@ -47,8 +48,6 @@ final class RegistrationController: UIViewController, ViewType {
     
     var viewModel: RegistrationViewModelBindable!
     var disposeBag: DisposeBag!
-    
-    weak var coordinatior: MainCoordinator?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -175,9 +174,7 @@ final class RegistrationController: UIViewController, ViewType {
         
         // UI Binding
         goToLoginPageButton.rx.tap
-            .subscribe(onNext:{ [unowned self] in
-                self.navigationController?.popViewController(animated: true)
-            })
+            .bind(to: viewModel.goToLoginPageButtonTapped)
             .disposed(by: disposeBag)
         
         

@@ -10,7 +10,10 @@
 		25F1E23FB7CD755320FB69FD /* Pods_MBER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D9ED20DF995431EED7A0C /* Pods_MBER.framework */; };
 		CE2E81D8252A05BD002804C8 /* SelectMemberTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */; };
 		CE7D18F7255819F900AD2FB1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D18F6255819F900AD2FB1 /* Coordinator.swift */; };
-		CE7D18FA25581A4700AD2FB1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D18F925581A4700AD2FB1 /* MainCoordinator.swift */; };
+		CE7D1922255968D500AD2FB1 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */; };
+		CE7D1925255969EC00AD2FB1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */; };
+		CE7D192A25596D3B00AD2FB1 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D192925596D3B00AD2FB1 /* AuthCoordinator.swift */; };
+		CE7D192D2559840B00AD2FB1 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */; };
 		CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC53E25222A350003CAAB /* InputTextField.swift */; };
 		CE7DC54325222A860003CAAB /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54225222A860003CAAB /* InputContainerView.swift */; };
 		CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */; };
@@ -43,7 +46,10 @@
 		6FF63178132E0A8660C193A9 /* Pods-MBER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBER.debug.xcconfig"; path = "Target Support Files/Pods-MBER/Pods-MBER.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMemberTypeView.swift; sourceTree = "<group>"; };
 		CE7D18F6255819F900AD2FB1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		CE7D18F925581A4700AD2FB1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CE7D192925596D3B00AD2FB1 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		CE7DC53E25222A350003CAAB /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		CE7DC54225222A860003CAAB /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConfirmButton.swift; sourceTree = "<group>"; };
@@ -106,10 +112,21 @@
 		CE7D18F5255819CC00AD2FB1 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				CE7D193025598C4300AD2FB1 /* Base */,
 				CE7D18F6255819F900AD2FB1 /* Coordinator.swift */,
-				CE7D18F925581A4700AD2FB1 /* MainCoordinator.swift */,
+				CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */,
+				CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */,
+				CE7D192925596D3B00AD2FB1 /* AuthCoordinator.swift */,
+				CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		CE7D193025598C4300AD2FB1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		CE7DC539252229D80003CAAB /* UITextField */ = {
@@ -393,7 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE98E48D2529B8400094FD8B /* NetworkManager.swift in Sources */,
-				CE7D18FA25581A4700AD2FB1 /* MainCoordinator.swift in Sources */,
+				CE7D1925255969EC00AD2FB1 /* AppCoordinator.swift in Sources */,
 				CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */,
 				CEA561E825275BFA00AD22AF /* RegistrationViewModel.swift in Sources */,
 				CE8AC1AF25207908004B4CDE /* Constants.swift in Sources */,
@@ -406,10 +423,13 @@
 				CEBEA7632556EF63003C8943 /* User.swift in Sources */,
 				CEA561E525275BE800AD22AF /* RegistrationController.swift in Sources */,
 				CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */,
+				CE7D192A25596D3B00AD2FB1 /* AuthCoordinator.swift in Sources */,
 				CE8AC1AB252078EC004B4CDE /* LoginController.swift in Sources */,
+				CE7D1922255968D500AD2FB1 /* BaseCoordinator.swift in Sources */,
 				CE7DC54B25222BDC0003CAAB /* LoginTitleLabel.swift in Sources */,
 				CE8AC174252077E1004B4CDE /* AppDelegate.swift in Sources */,
 				CE8AC1D6252079FE004B4CDE /* ViewType.swift in Sources */,
+				CE7D192D2559840B00AD2FB1 /* HomeCoordinator.swift in Sources */,
 				CE7D18F7255819F900AD2FB1 /* Coordinator.swift in Sources */,
 				CEBEA7572556ECCB003C8943 /* HomeViewModel.swift in Sources */,
 				CE8AC176252077E1004B4CDE /* SceneDelegate.swift in Sources */,

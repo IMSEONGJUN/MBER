@@ -13,6 +13,7 @@ struct LoginViewModel: LoginViewModelBindable {
     var email = BehaviorSubject<String>(value: "")
     var password = BehaviorSubject<String>(value: "")
     var loginButtonTapped = PublishRelay<Void>()
+    var goToRegisterButtonTapped = PublishRelay<Void>()
     
     var isLoginCompleted: Signal<Bool>
     var isValidForm: Driver<Bool>

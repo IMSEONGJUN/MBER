@@ -19,8 +19,6 @@ class HomeController: UIViewController, ViewType {
     var viewModel: HomeViewModelBindable!
     var disposeBag: DisposeBag!
     
-    weak var coordinator: MainCoordinator?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red

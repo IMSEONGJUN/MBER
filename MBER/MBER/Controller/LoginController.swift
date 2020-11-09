@@ -15,6 +15,7 @@ protocol LoginViewModelBindable: ViewModelType {
     var email: BehaviorSubject<String> { get }
     var password: BehaviorSubject<String> { get }
     var loginButtonTapped: PublishRelay<Void> { get }
+    var goToRegisterButtonTapped: PublishRelay<Void> { get }
     
     // Output
     var isLoginCompleted: Signal<Bool> { get }
@@ -27,13 +28,11 @@ final class LoginController: UIViewController, ViewType {
     var disposeBag: DisposeBag!
     var viewModel: LoginViewModelBindable!
     
-    weak var coordinator: MainCoordinator?
-    
     private let titleLabel = AuthTitleLabel()
     private let emailInputContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: InputTextField(placeHolder: "Email"))
     private let passwordInputContainer = InputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: InputTextField(placeHolder: "Password"))
     private let loginButton = GeneralConfirmButton(title: "Login", color: #colorLiteral(red: 0.2256013453, green: 0.6298174262, blue: 0.9165520668, alpha: 1))
-    private let goToSignUpPageButton = BottomButtonOnAuth(firstText: "Don't have an account? ", secondText: "Sign Up")
+    private let goToRegisterPageButton = BottomButtonOnAuth(firstText: "Don't have an account? ", secondText: "Sign Up")
     private let gesture = UITapGestureRecognizer()
     
     
@@ -77,8 +76,8 @@ final class LoginController: UIViewController, ViewType {
             $0.leading.trailing.equalToSuperview().inset(30)
         }
         
-        view.addSubview(goToSignUpPageButton)
-        goToSignUpPageButton.snp.makeConstraints {
+        view.addSubview(goToRegisterPageButton)
+        goToRegisterPageButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
@@ -132,10 +131,8 @@ final class LoginController: UIViewController, ViewType {
             .bind(to: viewModel.loginButtonTapped)
             .disposed(by: disposeBag)
         
-        goToSignUpPageButton.rx.tap
-            .subscribe(onNext: { [unowned self] in
-                self.coordinator?.goRegistrationVC()
-            })
+        goToRegisterPageButton.rx.tap
+            .bind(to: viewModel.goToRegisterButtonTapped)
             .disposed(by: disposeBag)
         
         gesture.rx.event

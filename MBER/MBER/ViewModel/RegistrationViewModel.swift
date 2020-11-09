@@ -20,6 +20,7 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
     let userType = PublishRelay<String>()
     let password = PublishRelay<String>()
     let signupButtonTapped = PublishRelay<Void>()
+    let goToLoginPageButtonTapped = PublishRelay<Void>()
     
     let isRegistering: Driver<Bool>
     let isRegistered: Signal<Bool>
