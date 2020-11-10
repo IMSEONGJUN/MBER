@@ -44,13 +44,14 @@ class LoginCoordinator: BaseCoordinator {
                 })
                 .disposed(by: disposeBag)
         
-            viewModel.isLoginCompleted
-                .map{ _ in Void() }
-                .emit(to: self.isCompleted)
-                .disposed(by: disposeBag)
+//            viewModel.isLoginCompleted
+//                .map{ _ in Void() }
+//                .emit(to: self.isCompleted)
+//                .disposed(by: disposeBag)
         
             viewModel.isLoginCompleted
                 .emit(onNext: { [weak self] _ in
+                    self?.isCompleted.accept(Void())
                     let homeCoordinator = HomeCoordinator(navigationController: self?.navigationController)
                     self?.add(coordinator: homeCoordinator)
                     homeCoordinator.start()
