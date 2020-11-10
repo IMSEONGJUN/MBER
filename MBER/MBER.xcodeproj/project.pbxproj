@@ -12,8 +12,9 @@
 		CE7D18F7255819F900AD2FB1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D18F6255819F900AD2FB1 /* Coordinator.swift */; };
 		CE7D1922255968D500AD2FB1 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */; };
 		CE7D1925255969EC00AD2FB1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */; };
-		CE7D192A25596D3B00AD2FB1 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D192925596D3B00AD2FB1 /* AuthCoordinator.swift */; };
+		CE7D192A25596D3B00AD2FB1 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D192925596D3B00AD2FB1 /* LoginCoordinator.swift */; };
 		CE7D192D2559840B00AD2FB1 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */; };
+		CE7D1953255ABFCA00AD2FB1 /* RegisterationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1952255ABFCA00AD2FB1 /* RegisterationCoordinator.swift */; };
 		CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC53E25222A350003CAAB /* InputTextField.swift */; };
 		CE7DC54325222A860003CAAB /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54225222A860003CAAB /* InputContainerView.swift */; };
 		CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */; };
@@ -48,8 +49,9 @@
 		CE7D18F6255819F900AD2FB1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		CE7D192925596D3B00AD2FB1 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		CE7D192925596D3B00AD2FB1 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		CE7D1952255ABFCA00AD2FB1 /* RegisterationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterationCoordinator.swift; sourceTree = "<group>"; };
 		CE7DC53E25222A350003CAAB /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		CE7DC54225222A860003CAAB /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConfirmButton.swift; sourceTree = "<group>"; };
@@ -113,10 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				CE7D193025598C4300AD2FB1 /* Base */,
-				CE7D18F6255819F900AD2FB1 /* Coordinator.swift */,
-				CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */,
-				CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */,
-				CE7D192925596D3B00AD2FB1 /* AuthCoordinator.swift */,
+				CE7D192925596D3B00AD2FB1 /* LoginCoordinator.swift */,
+				CE7D1952255ABFCA00AD2FB1 /* RegisterationCoordinator.swift */,
 				CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -125,6 +125,9 @@
 		CE7D193025598C4300AD2FB1 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				CE7D18F6255819F900AD2FB1 /* Coordinator.swift */,
+				CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */,
+				CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -422,8 +425,9 @@
 				CE7DC553252233520003CAAB /* BottomButtonOnAuth.swift in Sources */,
 				CEBEA7632556EF63003C8943 /* User.swift in Sources */,
 				CEA561E525275BE800AD22AF /* RegistrationController.swift in Sources */,
+				CE7D1953255ABFCA00AD2FB1 /* RegisterationCoordinator.swift in Sources */,
 				CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */,
-				CE7D192A25596D3B00AD2FB1 /* AuthCoordinator.swift in Sources */,
+				CE7D192A25596D3B00AD2FB1 /* LoginCoordinator.swift in Sources */,
 				CE8AC1AB252078EC004B4CDE /* LoginController.swift in Sources */,
 				CE7D1922255968D500AD2FB1 /* BaseCoordinator.swift in Sources */,
 				CE7DC54B25222BDC0003CAAB /* LoginTitleLabel.swift in Sources */,

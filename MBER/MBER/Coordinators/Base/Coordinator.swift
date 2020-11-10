@@ -9,7 +9,7 @@ import UIKit
 
 protocol Coordinator: AnyObject {
     
-    var childCoordinator: [Coordinator] { get set }
+    var childCoordinators: [Coordinator] { get set }
     
     func start()
 }
@@ -17,10 +17,10 @@ protocol Coordinator: AnyObject {
 extension Coordinator {
     
     func add(coordinator: Coordinator) {
-        childCoordinator.append(coordinator)
+        childCoordinators.append(coordinator)
     }
     
     func remove(coordinator: Coordinator) {
-        childCoordinator = childCoordinator.filter{ $0 !== coordinator }
+        childCoordinators = childCoordinators.filter{ $0 !== coordinator }
     }
 }

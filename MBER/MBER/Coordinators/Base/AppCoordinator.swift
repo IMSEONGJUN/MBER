@@ -20,20 +20,21 @@ class AppCoordinator: BaseCoordinator {
     
     override func start() {
         let navigationController = UINavigationController()
-        let authCoordinator = AuthCoordinator(navigationController: navigationController)
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
         
-        self.add(coordinator: authCoordinator)
+        self.add(coordinator: loginCoordinator)
         
-        authCoordinator.start()
+        loginCoordinator.isCompleted
+            .subscribe(onNext: { [weak self] _ in
+                self?.remove(coordinator: loginCoordinator)
+            })
+            .disposed(by: disposeBag)
+        
+        loginCoordinator.start()
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
-        authCoordinator.isCompleted
-            .subscribe(onNext: { [weak self] _ in
-                self?.remove(coordinator: authCoordinator)
-            })
-            .disposed(by: disposeBag)
         
     }
 }

@@ -103,6 +103,9 @@ final class LoginController: UIViewController, ViewType {
             .disposed(by: disposeBag)
         
         loginButton.rx.tap
+            .do(onNext: { [unowned self] _ in
+                self.showActivityIndicator(true)
+            })
             .bind(to: viewModel.loginButtonTapped)
             .disposed(by: disposeBag)
         
@@ -124,13 +127,6 @@ final class LoginController: UIViewController, ViewType {
         
         
         // UI binding
-        loginButton.rx.tap
-            .do(onNext: { [unowned self] _ in
-                self.showActivityIndicator(true)
-            })
-            .bind(to: viewModel.loginButtonTapped)
-            .disposed(by: disposeBag)
-        
         goToRegisterPageButton.rx.tap
             .bind(to: viewModel.goToRegisterButtonTapped)
             .disposed(by: disposeBag)

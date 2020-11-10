@@ -11,9 +11,10 @@ import RxCocoa
 
 class BaseCoordinator: Coordinator {
     
-    var childCoordinator: [Coordinator] = []
+    var childCoordinators: [Coordinator] = []
     
     let isCompleted = PublishRelay<Void>()
+    
     var disposeBag = DisposeBag()
     
     func start() {

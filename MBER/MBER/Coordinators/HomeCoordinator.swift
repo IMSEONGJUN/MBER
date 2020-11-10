@@ -10,9 +10,9 @@ import RxSwift
 import RxCocoa
 
 class HomeCoordinator: BaseCoordinator {
-    let navigationController: UINavigationController
+    let navigationController: UINavigationController?
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
     
@@ -20,6 +20,6 @@ class HomeCoordinator: BaseCoordinator {
         let viewModel = HomeViewModel()
         let vc = HomeController.create(with: viewModel)
         
-        navigationController.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
