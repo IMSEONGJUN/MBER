@@ -21,7 +21,7 @@ class LoginCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        if loginCheck() && false {
+        if !loginCheck() {
             let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
             self.add(coordinator: homeCoordinator)
             
@@ -44,11 +44,6 @@ class LoginCoordinator: BaseCoordinator {
                 })
                 .disposed(by: disposeBag)
         
-//            viewModel.isLoginCompleted
-//                .map{ _ in Void() }
-//                .emit(to: self.isCompleted)
-//                .disposed(by: disposeBag)
-        
             viewModel.isLoginCompleted
                 .emit(onNext: { [weak self] _ in
                     self?.isCompleted.accept(Void())
@@ -63,16 +58,16 @@ class LoginCoordinator: BaseCoordinator {
     }
     
     func pushRegistrationVC(in navigationController: UINavigationController?){
-        let registerationCoordinator = RegisterationCoordinator(navigationController: navigationController)
-        self.add(coordinator: registerationCoordinator)
+        let registrationCoordinator = RegistrationCoordinator(navigationController: navigationController)
+        self.add(coordinator: registrationCoordinator)
         
-        registerationCoordinator.isCompleted
+        registrationCoordinator.isCompleted
             .subscribe(onNext: {[weak self] _ in
-                registerationCoordinator.navigationController?.popViewController(animated: true)
-                self?.remove(coordinator: registerationCoordinator)
+                registrationCoordinator.navigationController?.popViewController(animated: true)
+                self?.remove(coordinator: registrationCoordinator)
             })
             .disposed(by: disposeBag)
         
-        registerationCoordinator.start()
+        registrationCoordinator.start()
     }
 }

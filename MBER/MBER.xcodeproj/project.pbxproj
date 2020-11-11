@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		25F1E23FB7CD755320FB69FD /* Pods_MBER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D9ED20DF995431EED7A0C /* Pods_MBER.framework */; };
 		CE2E81D8252A05BD002804C8 /* SelectMemberTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */; };
+		CE511DDA255C25EB00976855 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE511DD9255C25EB00976855 /* HomeModel.swift */; };
 		CE7D18F7255819F900AD2FB1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D18F6255819F900AD2FB1 /* Coordinator.swift */; };
 		CE7D1922255968D500AD2FB1 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */; };
 		CE7D1925255969EC00AD2FB1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */; };
 		CE7D192A25596D3B00AD2FB1 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D192925596D3B00AD2FB1 /* LoginCoordinator.swift */; };
 		CE7D192D2559840B00AD2FB1 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */; };
-		CE7D1953255ABFCA00AD2FB1 /* RegisterationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1952255ABFCA00AD2FB1 /* RegisterationCoordinator.swift */; };
+		CE7D1953255ABFCA00AD2FB1 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1952255ABFCA00AD2FB1 /* RegistrationCoordinator.swift */; };
 		CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC53E25222A350003CAAB /* InputTextField.swift */; };
 		CE7DC54325222A860003CAAB /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54225222A860003CAAB /* InputContainerView.swift */; };
 		CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */; };
@@ -46,12 +47,13 @@
 		598D9ED20DF995431EED7A0C /* Pods_MBER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FF63178132E0A8660C193A9 /* Pods-MBER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBER.debug.xcconfig"; path = "Target Support Files/Pods-MBER/Pods-MBER.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMemberTypeView.swift; sourceTree = "<group>"; };
+		CE511DD9255C25EB00976855 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		CE7D18F6255819F900AD2FB1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		CE7D192925596D3B00AD2FB1 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		CE7D1952255ABFCA00AD2FB1 /* RegisterationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterationCoordinator.swift; sourceTree = "<group>"; };
+		CE7D1952255ABFCA00AD2FB1 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		CE7DC53E25222A350003CAAB /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		CE7DC54225222A860003CAAB /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		CE7DC54625222AE70003CAAB /* GeneralConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConfirmButton.swift; sourceTree = "<group>"; };
@@ -111,12 +113,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE511DD8255C25CE00976855 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CEBEA7622556EF63003C8943 /* User.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		CE7D18F5255819CC00AD2FB1 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				CE7D193025598C4300AD2FB1 /* Base */,
 				CE7D192925596D3B00AD2FB1 /* LoginCoordinator.swift */,
-				CE7D1952255ABFCA00AD2FB1 /* RegisterationCoordinator.swift */,
+				CE7D1952255ABFCA00AD2FB1 /* RegistrationCoordinator.swift */,
 				CE7D192C2559840B00AD2FB1 /* HomeCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -292,7 +302,8 @@
 		CEBEA7612556EF50003C8943 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEBEA7622556EF63003C8943 /* User.swift */,
+				CE511DD9255C25EB00976855 /* HomeModel.swift */,
+				CE511DD8255C25CE00976855 /* Entity */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +425,7 @@
 			files = (
 				CE98E48D2529B8400094FD8B /* NetworkManager.swift in Sources */,
 				CE7D1925255969EC00AD2FB1 /* AppCoordinator.swift in Sources */,
+				CE511DDA255C25EB00976855 /* HomeModel.swift in Sources */,
 				CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */,
 				CEA561E825275BFA00AD22AF /* RegistrationViewModel.swift in Sources */,
 				CE8AC1AF25207908004B4CDE /* Constants.swift in Sources */,
@@ -425,7 +437,7 @@
 				CE7DC553252233520003CAAB /* BottomButtonOnAuth.swift in Sources */,
 				CEBEA7632556EF63003C8943 /* User.swift in Sources */,
 				CEA561E525275BE800AD22AF /* RegistrationController.swift in Sources */,
-				CE7D1953255ABFCA00AD2FB1 /* RegisterationCoordinator.swift in Sources */,
+				CE7D1953255ABFCA00AD2FB1 /* RegistrationCoordinator.swift in Sources */,
 				CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */,
 				CE7D192A25596D3B00AD2FB1 /* LoginCoordinator.swift in Sources */,
 				CE8AC1AB252078EC004B4CDE /* LoginController.swift in Sources */,

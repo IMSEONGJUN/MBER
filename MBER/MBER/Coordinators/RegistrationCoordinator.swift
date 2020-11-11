@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterationCoordinator: BaseCoordinator {
+class RegistrationCoordinator: BaseCoordinator {
     
     let navigationController: UINavigationController?
     

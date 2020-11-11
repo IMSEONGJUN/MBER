@@ -11,7 +11,7 @@ import RxCocoa
 
 struct HomeViewModel: HomeViewModelBindable {
 
-    init() {
+    init(model: HomeModel = HomeModel()) {
         
     }
 }
