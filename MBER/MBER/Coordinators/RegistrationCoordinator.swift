@@ -13,6 +13,7 @@ class RegistrationCoordinator: BaseCoordinator {
     
     init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
+        print("RegisterationCoordinator init")
     }
     
     deinit {

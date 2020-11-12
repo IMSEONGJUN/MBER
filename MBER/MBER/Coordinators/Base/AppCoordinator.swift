@@ -20,17 +20,18 @@ class AppCoordinator: BaseCoordinator {
     
     override func start() {
         let navigationController = UINavigationController()
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        var loginCoordinator: LoginCoordinator? = LoginCoordinator(navigationController: navigationController)
         
         self.add(coordinator: loginCoordinator)
         
-        loginCoordinator.isCompleted
+        loginCoordinator?.isCompleted
             .subscribe(onNext: { [weak self] _ in
                 self?.remove(coordinator: loginCoordinator)
+                loginCoordinator = nil
             })
             .disposed(by: disposeBag)
         
-        loginCoordinator.start()
+        loginCoordinator?.start()
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

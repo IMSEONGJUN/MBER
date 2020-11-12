@@ -11,7 +11,7 @@ import RxCocoa
 
 class BaseCoordinator: Coordinator {
     
-    var childCoordinators: [Coordinator] = []
+    var childCoordinators: [Coordinator?] = []
     
     let isCompleted = PublishRelay<Void>()
     

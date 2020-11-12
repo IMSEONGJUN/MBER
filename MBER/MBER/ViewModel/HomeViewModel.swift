@@ -11,7 +11,10 @@ import RxCocoa
 
 struct HomeViewModel: HomeViewModelBindable {
 
+    let user: Driver<User?>
+    
     init(model: HomeModel = HomeModel()) {
-        
+        let userProxy = PublishRelay<User?>()
+        user = userProxy.asDriver(onErrorJustReturn: nil)
     }
 }

@@ -58,16 +58,17 @@ class LoginCoordinator: BaseCoordinator {
     }
     
     func pushRegistrationVC(in navigationController: UINavigationController?){
-        let registrationCoordinator = RegistrationCoordinator(navigationController: navigationController)
+        var registrationCoordinator: RegistrationCoordinator? = RegistrationCoordinator(navigationController: navigationController)
         self.add(coordinator: registrationCoordinator)
         
-        registrationCoordinator.isCompleted
+        registrationCoordinator?.isCompleted
             .subscribe(onNext: {[weak self] _ in
-                registrationCoordinator.navigationController?.popViewController(animated: true)
+                registrationCoordinator?.navigationController?.popViewController(animated: true)
                 self?.remove(coordinator: registrationCoordinator)
+                registrationCoordinator = nil
             })
             .disposed(by: disposeBag)
         
-        registrationCoordinator.start()
+        registrationCoordinator?.start()
     }
 }

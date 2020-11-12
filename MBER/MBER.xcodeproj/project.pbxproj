@@ -10,6 +10,8 @@
 		25F1E23FB7CD755320FB69FD /* Pods_MBER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D9ED20DF995431EED7A0C /* Pods_MBER.framework */; };
 		CE2E81D8252A05BD002804C8 /* SelectMemberTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */; };
 		CE511DDA255C25EB00976855 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE511DD9255C25EB00976855 /* HomeModel.swift */; };
+		CE511DE0255D7BAF00976855 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE511DDF255D7BAF00976855 /* LocationHandler.swift */; };
+		CE511DE4255D7F5B00976855 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE511DE3255D7F5B00976855 /* Trip.swift */; };
 		CE7D18F7255819F900AD2FB1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D18F6255819F900AD2FB1 /* Coordinator.swift */; };
 		CE7D1922255968D500AD2FB1 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */; };
 		CE7D1925255969EC00AD2FB1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */; };
@@ -48,6 +50,8 @@
 		6FF63178132E0A8660C193A9 /* Pods-MBER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBER.debug.xcconfig"; path = "Target Support Files/Pods-MBER/Pods-MBER.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2E81D7252A05BD002804C8 /* SelectMemberTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMemberTypeView.swift; sourceTree = "<group>"; };
 		CE511DD9255C25EB00976855 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		CE511DDF255D7BAF00976855 /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		CE511DE3255D7F5B00976855 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		CE7D18F6255819F900AD2FB1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE7D1921255968D500AD2FB1 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		CE7D1924255969EC00AD2FB1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -117,8 +121,17 @@
 			isa = PBXGroup;
 			children = (
 				CEBEA7622556EF63003C8943 /* User.swift */,
+				CE511DE3255D7F5B00976855 /* Trip.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		CE511DDE255D7B9100976855 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE511DDF255D7BAF00976855 /* LocationHandler.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		CE7D18F5255819CC00AD2FB1 /* Coordinators */ = {
@@ -201,6 +214,7 @@
 				CE8AC1A32520785A004B4CDE /* Extensions */,
 				CE8AC1A225207857004B4CDE /* Service */,
 				CE8AC1A125207854004B4CDE /* Constants */,
+				CE511DDE255D7B9100976855 /* Utils */,
 				CE8AC1A625207896004B4CDE /* Base */,
 				CE8AC1A025207852004B4CDE /* View */,
 				CE7D18F5255819CC00AD2FB1 /* Coordinators */,
@@ -425,6 +439,7 @@
 			files = (
 				CE98E48D2529B8400094FD8B /* NetworkManager.swift in Sources */,
 				CE7D1925255969EC00AD2FB1 /* AppCoordinator.swift in Sources */,
+				CE511DE0255D7BAF00976855 /* LocationHandler.swift in Sources */,
 				CE511DDA255C25EB00976855 /* HomeModel.swift in Sources */,
 				CE7DC54725222AE70003CAAB /* GeneralConfirmButton.swift in Sources */,
 				CEA561E825275BFA00AD22AF /* RegistrationViewModel.swift in Sources */,
@@ -441,6 +456,7 @@
 				CE7DC53F25222A350003CAAB /* InputTextField.swift in Sources */,
 				CE7D192A25596D3B00AD2FB1 /* LoginCoordinator.swift in Sources */,
 				CE8AC1AB252078EC004B4CDE /* LoginController.swift in Sources */,
+				CE511DE4255D7F5B00976855 /* Trip.swift in Sources */,
 				CE7D1922255968D500AD2FB1 /* BaseCoordinator.swift in Sources */,
 				CE7DC54B25222BDC0003CAAB /* LoginTitleLabel.swift in Sources */,
 				CE8AC174252077E1004B4CDE /* AppDelegate.swift in Sources */,
