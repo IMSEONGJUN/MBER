@@ -11,6 +11,9 @@ import RxCocoa
 
 struct HomeViewModel: HomeViewModelBindable {
 
+    // Input
+    
+    // Output
     let user: Driver<User?>
     
     init(model: HomeModel = HomeModel()) {

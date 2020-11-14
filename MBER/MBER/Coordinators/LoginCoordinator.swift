@@ -22,39 +22,47 @@ class LoginCoordinator: BaseCoordinator {
     
     override func start() {
         if !loginCheck() {
-            let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
-            self.add(coordinator: homeCoordinator)
-            
-            homeCoordinator.isCompleted
-                .subscribe(onNext: {[weak self] _ in
-                    self?.remove(coordinator: homeCoordinator)
-                    homeCoordinator.navigationController?.popViewController(animated: true)
-                })
-                .disposed(by: disposeBag)
-            
-            homeCoordinator.start()
+            loggedInStatus()
         } else {
-            let viewModel = LoginViewModel()
-            let vc = LoginController.create(with: viewModel)
-            
-            viewModel.goToRegisterButtonTapped
-                .subscribe(onNext: { [weak self] in
-                    guard let self = self else { return }
-                    self.pushRegistrationVC(in: self.navigationController)
-                })
-                .disposed(by: disposeBag)
-        
-            viewModel.isLoginCompleted
-                .emit(onNext: { [weak self] _ in
-                    self?.isCompleted.accept(Void())
-                    let homeCoordinator = HomeCoordinator(navigationController: self?.navigationController)
-                    self?.add(coordinator: homeCoordinator)
-                    homeCoordinator.start()
-                })
-                .disposed(by: disposeBag)
-        
-            navigationController?.pushViewController(vc, animated: true)
+            loggedOutStatus()
         }
+    }
+    
+    func loggedInStatus() {
+        let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
+        self.add(coordinator: homeCoordinator)
+        
+        homeCoordinator.isCompleted
+            .subscribe(onNext: {[weak self] _ in
+                self?.remove(coordinator: homeCoordinator)
+                homeCoordinator.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        homeCoordinator.start()
+    }
+    
+    func loggedOutStatus() {
+        let viewModel = LoginViewModel()
+        let vc = LoginController.create(with: viewModel)
+        
+        viewModel.goToRegisterButtonTapped
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.pushRegistrationVC(in: self.navigationController)
+            })
+            .disposed(by: disposeBag)
+    
+        viewModel.isLoginCompleted
+            .emit(onNext: { [weak self] _ in
+                self?.isCompleted.accept(Void())
+                let homeCoordinator = HomeCoordinator(navigationController: self?.navigationController)
+                self?.add(coordinator: homeCoordinator)
+                homeCoordinator.start()
+            })
+            .disposed(by: disposeBag)
+    
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func pushRegistrationVC(in navigationController: UINavigationController?){

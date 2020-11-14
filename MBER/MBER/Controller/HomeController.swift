@@ -17,8 +17,6 @@ protocol HomeViewModelBindable: ViewModelType {
     
     //Output
     var user: Driver<User?> { get }
-    
-    
 }
 
 class HomeController: UIViewController, ViewType {
@@ -35,6 +33,24 @@ class HomeController: UIViewController, ViewType {
         view.backgroundColor = .red
     }
     
+    func enableLocationServices() {
+        locationHandler.locationManager?.delegate = self
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationHandler.locationManager?.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            break
+        case .authorizedAlways:
+            print("always")
+        case .authorizedWhenInUse:
+            locationHandler.locationManager?.startUpdatingLocation()
+            locationHandler.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        @unknown default:
+            break
+        }
+    }
+    
     func setupUI() {
         
     }
@@ -44,4 +60,9 @@ class HomeController: UIViewController, ViewType {
     }
     
 
+}
+
+
+extension HomeController: CLLocationManagerDelegate {
+    
 }
