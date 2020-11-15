@@ -10,7 +10,8 @@ target 'MBER' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxOptional'
-  
+  pod 'RxCoreLocation'
+
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'

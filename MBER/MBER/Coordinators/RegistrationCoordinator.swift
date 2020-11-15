@@ -39,13 +39,23 @@ final class RegistrationCoordinator: BaseCoordinator {
     }
     
     func switchToHomeVC() {
+        var homeCoordinator: HomeCoordinator? = HomeCoordinator(navigationController: navigationController)
+        self.add(coordinator: homeCoordinator)
+        
+        homeCoordinator?.isCompleted
+            .subscribe(onNext: { [weak self] _ in
+                self?.remove(coordinator: homeCoordinator)
+                homeCoordinator = nil
+            })
+            .disposed(by: disposeBag)
+
+        homeCoordinator?.start()
+        
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.backgroundColor = .systemBackground
-            let homeVC = HomeController.create(with: HomeViewModel())
-            let rootVC = UINavigationController(rootViewController: homeVC)
-            window.rootViewController = rootVC
-
+            window.rootViewController = navigationController
+            
             let sceneDelegate = windowScene.delegate as? SceneDelegate
             window.makeKeyAndVisible()
             sceneDelegate?.window = window

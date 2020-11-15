@@ -10,6 +10,7 @@ import Firebase
 import RxSwift
 import RxCocoa
 import CoreLocation
+import RxCoreLocation
 import MapKit
 import SnapKit
 
@@ -27,6 +28,7 @@ final class HomeController: UIViewController, ViewType {
     
     private let mapView = MKMapView()
     private let route = MKRoute()
+    private let manager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +42,8 @@ final class HomeController: UIViewController, ViewType {
     }
     
     func setupUI() {
+        setLocationManager()
         configureMapView()
-        
-        // logout
         AuthManager.shared.doLogout()
             .subscribe { completable in
                 switch completable {
@@ -52,8 +53,12 @@ final class HomeController: UIViewController, ViewType {
                     print("Failed to logout", err)
                 }
             }
-            .disposed(by: disposeBag)
-
+            .disposed(by: self.disposeBag)
+    }
+    
+    func setLocationManager() {
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
     }
     
     func configureMapView() {
@@ -71,3 +76,7 @@ final class HomeController: UIViewController, ViewType {
     
 
 }
+
+//      <<logout>>
+
+

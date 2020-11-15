@@ -10,14 +10,13 @@ import CoreLocation
 class LocationHandler: NSObject, CLLocationManagerDelegate {
     
     static let shared = LocationHandler()
-    var locationManager: CLLocationManager!
+    var locationManager: CLLocationManager
     var location: CLLocation?
     
-    override init() {
-        super.init()
+    private override init() {
         locationManager = CLLocationManager()
+        super.init()
         locationManager.delegate = self
-        
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
     }

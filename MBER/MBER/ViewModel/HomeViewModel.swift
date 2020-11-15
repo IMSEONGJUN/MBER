@@ -13,6 +13,8 @@ struct HomeViewModel: HomeViewModelBindable {
 
     // Input
 //    private let locationHandler = LocationHandler.shared
+    let logoutButtonTapped = PublishRelay<Void>()
+    
     // Output
     let user: Driver<User?>
     
