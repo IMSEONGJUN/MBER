@@ -13,7 +13,9 @@ import Firebase
 import FirebaseFirestore
 
 final class AuthManager {
-    init() { }
+    
+    static let shared = AuthManager()
+    private init() { }
     
     var disposeBag = DisposeBag()
     
@@ -30,6 +32,19 @@ final class AuthManager {
             return Disposables.create{
                 observer.onCompleted()
             }
+        }
+    }
+    
+    // MARK: - Logout
+    func doLogout() -> Completable {
+        return Completable.create { completable -> Disposable in
+            do {
+                try Auth.auth().signOut()
+                completable(.completed)
+            } catch {
+                completable(.error(error))
+            }
+            return Disposables.create()
         }
     }
     

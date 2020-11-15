@@ -121,7 +121,6 @@ final class LoginController: UIViewController, ViewType {
         viewModel.isLoginCompleted
             .emit(onNext: { [weak self] _ in
                 self?.showActivityIndicator(false)
-                self?.switchToHomeVC()
             })
             .disposed(by: disposeBag)
         

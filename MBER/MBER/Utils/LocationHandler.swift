@@ -15,14 +15,23 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
     
     override init() {
         super.init()
-        
         locationManager = CLLocationManager()
         locationManager.delegate = self
+        
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestAlwaysAuthorization()
-        }
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let accuracyAuthorization = manager.accuracyAuthorization
+            switch accuracyAuthorization {
+            case .fullAccuracy:
+                fallthrough
+            case .reducedAccuracy:
+                locationManager.requestAlwaysAuthorization()
+                locationManager.startUpdatingLocation()
+            default:
+                break
+            }
     }
 }

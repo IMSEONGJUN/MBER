@@ -12,7 +12,7 @@ import RxCocoa
 struct HomeViewModel: HomeViewModelBindable {
 
     // Input
-    
+//    private let locationHandler = LocationHandler.shared
     // Output
     let user: Driver<User?>
     

@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import JGProgressHUD
 import Firebase
+import RxSwift
+import RxCocoa
 
 // MARK: - Global function
 func isValidEmailAddress(email: String) -> Bool {

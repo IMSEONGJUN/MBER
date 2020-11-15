@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeCoordinator: BaseCoordinator {
+final class HomeCoordinator: BaseCoordinator {
     let navigationController: UINavigationController?
     
     init(navigationController: UINavigationController?) {

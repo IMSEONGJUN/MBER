@@ -30,7 +30,7 @@ struct RegistrationViewModel: RegistrationViewModelBindable {
     
     
     // MARK: - Initializer
-    init(_ model: AuthManager = AuthManager()) {
+    init(_ model: AuthManager = .shared) {
         // Proxy
         let onRegistering = PublishRelay<Bool>()
         isRegistering = onRegistering.asDriver(onErrorJustReturn: false)

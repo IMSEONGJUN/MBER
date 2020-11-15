@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginCoordinator: BaseCoordinator {
+final class LoginCoordinator: BaseCoordinator {
     let navigationController: UINavigationController?
     
     init(navigationController: UINavigationController?) {
@@ -21,7 +21,7 @@ class LoginCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        if !loginCheck() {
+        if loginCheck() {
             loggedInStatus()
         } else {
             loggedOutStatus()
@@ -29,17 +29,18 @@ class LoginCoordinator: BaseCoordinator {
     }
     
     func loggedInStatus() {
-        let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
+        var homeCoordinator: HomeCoordinator? = HomeCoordinator(navigationController: self.navigationController)
         self.add(coordinator: homeCoordinator)
         
-        homeCoordinator.isCompleted
+        homeCoordinator?.isCompleted
             .subscribe(onNext: {[weak self] _ in
                 self?.remove(coordinator: homeCoordinator)
-                homeCoordinator.navigationController?.popViewController(animated: true)
+                homeCoordinator?.navigationController?.popViewController(animated: true)
+                homeCoordinator = nil
             })
             .disposed(by: disposeBag)
         
-        homeCoordinator.start()
+        homeCoordinator?.start()
     }
     
     func loggedOutStatus() {

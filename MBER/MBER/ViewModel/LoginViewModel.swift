@@ -10,15 +10,15 @@ import RxSwift
 import RxCocoa
 
 struct LoginViewModel: LoginViewModelBindable {
-    var email = BehaviorSubject<String>(value: "")
-    var password = BehaviorSubject<String>(value: "")
-    var loginButtonTapped = PublishRelay<Void>()
-    var goToRegisterButtonTapped = PublishRelay<Void>()
+    let email = BehaviorSubject<String>(value: "")
+    let password = BehaviorSubject<String>(value: "")
+    let loginButtonTapped = PublishRelay<Void>()
+    let goToRegisterButtonTapped = PublishRelay<Void>()
     
-    var isLoginCompleted: Signal<Bool>
-    var isValidForm: Driver<Bool>
+    let isLoginCompleted: Signal<Bool>
+    let isValidForm: Driver<Bool>
     
-    init(_ model: AuthManager = AuthManager()) {
+    init(_ model: AuthManager = .shared) {
         self.isValidForm = Observable
             .combineLatest(
                 email,

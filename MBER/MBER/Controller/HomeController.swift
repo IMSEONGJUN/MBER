@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import CoreLocation
 import MapKit
+import SnapKit
 
 protocol HomeViewModelBindable: ViewModelType {
     //Input
@@ -19,40 +20,49 @@ protocol HomeViewModelBindable: ViewModelType {
     var user: Driver<User?> { get }
 }
 
-class HomeController: UIViewController, ViewType {
+final class HomeController: UIViewController, ViewType {
 
     var viewModel: HomeViewModelBindable!
     var disposeBag: DisposeBag!
     
     private let mapView = MKMapView()
     private let route = MKRoute()
-    private let locationHandler = LocationHandler.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
     }
     
-    func enableLocationServices() {
-        locationHandler.locationManager?.delegate = self
-        
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            locationHandler.locationManager?.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            break
-        case .authorizedAlways:
-            print("always")
-        case .authorizedWhenInUse:
-            locationHandler.locationManager?.startUpdatingLocation()
-            locationHandler.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        @unknown default:
-            break
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     func setupUI() {
+        configureMapView()
         
+        // logout
+        AuthManager.shared.doLogout()
+            .subscribe { completable in
+                switch completable {
+                case .completed:
+                    print("Successfully logged out")
+                case .error(let err):
+                    print("Failed to logout", err)
+                }
+            }
+            .disposed(by: disposeBag)
+
+    }
+    
+    func configureMapView() {
+        view.addSubview(mapView)
+        mapView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.followWithHeading, animated: true)
     }
     
     func bind() {
@@ -60,9 +70,4 @@ class HomeController: UIViewController, ViewType {
     }
     
 
-}
-
-
-extension HomeController: CLLocationManagerDelegate {
-    
 }
