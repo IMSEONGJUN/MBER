@@ -8,17 +8,23 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import CoreLocation
+import RxCoreLocation
 
 struct HomeViewModel: HomeViewModelBindable {
 
     // Input
-//    private let locationHandler = LocationHandler.shared
     let logoutButtonTapped = PublishRelay<Void>()
     
     // Output
     let user: Driver<User?>
     
+    private let manager = CLLocationManager()
+    
     init(model: HomeModel = HomeModel()) {
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
         let userProxy = PublishRelay<User?>()
         user = userProxy.asDriver(onErrorJustReturn: nil)
     }
