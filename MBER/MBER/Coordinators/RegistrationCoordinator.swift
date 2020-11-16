@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class RegistrationCoordinator: BaseCoordinator {
     
@@ -41,6 +42,7 @@ final class RegistrationCoordinator: BaseCoordinator {
     func switchToHomeVC() {
         var homeCoordinator: HomeCoordinator? = HomeCoordinator(navigationController: navigationController)
         self.add(coordinator: homeCoordinator)
+        self.isCompleted.accept(Void())
         
         homeCoordinator?.isCompleted
             .subscribe(onNext: { [weak self] _ in

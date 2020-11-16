@@ -52,7 +52,7 @@ final class RegistrationController: UIViewController, ViewType {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Colors.AuthViewBackGroundColor
+        view.backgroundColor = Colors.authViewBackGroundColor
     }
 
     

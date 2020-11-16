@@ -27,6 +27,7 @@ final class HomeCoordinator: BaseCoordinator {
                         switch completable {
                         case .completed:
                             print("Successfully logged out")
+                            self?.isCompleted.accept(Void())
                             self?.switchToLoginVC()
                         case .error(let err):
                             print("Failed to logout", err)

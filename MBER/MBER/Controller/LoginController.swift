@@ -39,7 +39,7 @@ final class LoginController: UIViewController, ViewType {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Colors.AuthViewBackGroundColor
+        view.backgroundColor = Colors.authViewBackGroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
