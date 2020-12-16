@@ -9,6 +9,14 @@ import UIKit
 
 final class InputTextField: UITextField {
     
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 8, dy: 0)
+    }
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 8, dy: 0)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

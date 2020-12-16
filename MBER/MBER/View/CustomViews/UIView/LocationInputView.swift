@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class LocationInputView: UIView {
+final class LocationInputView: UIView {
     
     var user: User? {
         didSet {
@@ -69,8 +69,9 @@ class LocationInputView: UIView {
         tf.returnKeyType = .search
         tf.font = UIFont.systemFont(ofSize: 14)
         let paddingView = UIView()
-        paddingView.frame.size = CGSize(width: 8, height: 30)
+        paddingView.frame = CGRect(x: 0, y: 0, width: 8, height: 30)
         tf.leftView = paddingView
+        tf.delegate = self
         tf.leftViewMode = .always
         tf.delegate = self
         tf.clearButtonMode = .whileEditing
@@ -79,11 +80,14 @@ class LocationInputView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureUI() {
+        
     }
 }
 
