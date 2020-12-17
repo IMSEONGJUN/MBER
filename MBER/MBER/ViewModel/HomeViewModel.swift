@@ -18,14 +18,29 @@ struct HomeViewModel: HomeViewModelBindable {
     
     // Output
     let user: Driver<User?>
-    
-    private let manager = CLLocationManager()
+    let manager = CLLocationManager()
     
     init(model: HomeModel = HomeModel()) {
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
-        
         let userProxy = PublishRelay<User?>()
         user = userProxy.asDriver(onErrorJustReturn: nil)
+        
+        enableLocationServices()
+    }
+    
+    func enableLocationServices() {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+            manager.startUpdatingLocation()
+            print("notDetermined")
+        case .restricted, .denied:
+            break
+        case .authorizedAlways:
+            print("authorizedAlways")
+        case .authorizedWhenInUse:
+            print("authorizedWhenInUse")
+        default:
+            break
+        }
     }
 }
