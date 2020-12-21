@@ -31,14 +31,13 @@ struct HomeViewModel: HomeViewModelBindable {
         switch manager.authorizationStatus {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
-            manager.startUpdatingLocation()
-            print("notDetermined")
         case .restricted, .denied:
             break
         case .authorizedAlways:
-            print("authorizedAlways")
+            manager.startUpdatingLocation()
+            manager.desiredAccuracy = kCLLocationAccuracyBest
         case .authorizedWhenInUse:
-            print("authorizedWhenInUse")
+            manager.requestAlwaysAuthorization()
         default:
             break
         }

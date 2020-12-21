@@ -18,6 +18,7 @@ protocol HomeViewModelBindable: ViewModelType {
     
     //Output
     var user: Driver<User?> { get }
+    var manager: CLLocationManager { get }
 }
 
 final class HomeController: UIViewController, ViewType {
@@ -41,16 +42,6 @@ final class HomeController: UIViewController, ViewType {
     
     func setupUI() {
         configureMapView()
-        /*AuthManager.shared.doLogout()
-            .subscribe { completable in
-                switch completable {
-                case .completed:
-                    print("Successfully logged out")
-                case .error(let err):
-                    print("Failed to logout", err)
-                }
-            }
-            .disposed(by: self.disposeBag)*/
     }
     
     func configureMapView() {
@@ -59,14 +50,41 @@ final class HomeController: UIViewController, ViewType {
             $0.edges.equalToSuperview()
         }
         mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.followWithHeading, animated: true)
+        mapView.userTrackingMode = .follow
     }
     
     func bind() {
+        viewModel.manager.rx.didChangeAuthorization
+            .subscribe(onNext: { [weak self] in
+                if $0.status == .authorizedWhenInUse {
+                    self?.viewModel.manager.requestAlwaysAuthorization()
+                }
+            })
+            .disposed(by: disposeBag)
         
+        viewModel.manager.rx.didUpdateLocations
+            .subscribe(onNext:{ [weak self] in
+                guard let current = $0.locations.last else { return }
+                let coordinate = current.coordinate
+                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                let region = MKCoordinateRegion(center: coordinate, span: span)
+                self?.mapView.setRegion(region, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
 
 }
 
 
+
+/*AuthManager.shared.doLogout()
+    .subscribe { completable in
+        switch completable {
+        case .completed:
+            print("Successfully logged out")
+        case .error(let err):
+            print("Failed to logout", err)
+        }
+    }
+    .disposed(by: self.disposeBag)*/
