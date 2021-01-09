@@ -1,5 +1,5 @@
 # MBER
-## Work on Progress Recently
+## Work on Progress Recently but have a brief pause for personal reasons
 
 - UBER Copy App
 - M in MBER comes from Mobility's Initial M
